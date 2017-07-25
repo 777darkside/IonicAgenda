@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ encabezado }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <h1> {{ texto }} </h1>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label floating>Asunto</ion-label>
+            <ion-input type="text"
+            name="cita_asunto"
+            [(ngModel)]="citas.cita_asunto"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Fecha y Hora</ion-label>
+            <ion-input type="text"
+            name="cita_fecha"
+            [(ngModel)]="citas.cita_fecha"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Lugar</ion-label>
+            <ion-input type="text"
+            name="cita_lugar"
+            [(ngModel)]="citas.cita_lugar"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Contacto</ion-label>
+            <ion-select name="contacto_id" [(ngModel)]="citas.contacto_id"  >
+              <ion-option *ngFor="let contacto of contactos" value="{{ contacto.contacto_id }}" >{{ contacto.contacto_nombre + " " + contacto.contacto_apellido}}</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-grid>
+        <ion-row>
+          <button ion-button *ngIf="parametro == 'nuevo'"
+            (click)="guardar()">Guardar</button>
+        </ion-row>
+      </ion-grid>
+      <ion-grid *ngIf="parametro != 'nuevo'">
+        <ion-row>
+           <button
+            (click)="editar()"
+            ion-button color="warning">Editar</button>  
+            <button
+            *ngIf="parametro != 'nuevo'"
+            (click)="eliminar()"
+            ion-button color="danger">Eliminar</button>
+        </ion-row>
+      </ion-grid>  
+    </ion-row>
+  </ion-grid>
+</ion-content>

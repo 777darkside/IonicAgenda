@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>{{ encabezado }}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-list>
+          <ion-item>
+            <ion-label floating>Descripcion</ion-label>
+            <ion-input type="text"
+            name="tarea_descripcion"
+            [(ngModel)]="tarea.tarea_descripcion"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Fecha</ion-label>
+            <ion-input type="text"
+            name="tarea_fecha"
+            [(ngModel)]="tarea.tarea_fecha"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Empieza</ion-label>
+            <ion-input type="text"
+            name="tarea_inicio"
+            [(ngModel)]="tarea.tarea_inicio"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Finaliza</ion-label>
+            <ion-input type="text"
+            name="tarea_fin"
+            [(ngModel)]="tarea.tarea_fin"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label floating>Estado</ion-label>
+            <ion-select [(ngModel)]="tarea.tarea_estado">
+              <ion-option value="Iniziado">Iniziado</ion-option>
+              <ion-option value="Finalizado">Finalizado</ion-option>
+              <ion-option value="Pendiente">Pendiente</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <button ion-button
+      (click)="guardar()">Guardar</button>
+
+      <button
+      *ngIf="parametro != 'nuevo'"
+      (click)="eliminar(tarea.tarea_id)"
+      ion-button color="danger">Eliminar</button>
+    </ion-row>
+  </ion-grid>
+</ion-content>
